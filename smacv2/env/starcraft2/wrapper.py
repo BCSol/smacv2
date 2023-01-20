@@ -10,8 +10,7 @@ class StarCraftCapabilityEnvWrapper(MultiAgentEnv):
         self._parse_distribution_config()
         self.env = StarCraft2Env(**kwargs)
         assert (
-            self.distribution_config.keys()
-            == kwargs["capability_config"].keys()
+            self.distribution_config.keys() == kwargs["capability_config"].keys()
         ), "Must give distribution config and capability config the same keys"
 
     def _parse_distribution_config(self):
@@ -74,7 +73,7 @@ class StarCraftCapabilityEnvWrapper(MultiAgentEnv):
     def get_avail_agent_actions(self, agent_id):
         return self.env.get_avail_agent_actions(agent_id)
 
-    def render(self):
+    def render(self, mode=None):
         return self.env.render()
 
     def step(self, actions):
